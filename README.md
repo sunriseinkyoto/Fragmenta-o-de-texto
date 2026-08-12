@@ -17,3 +17,5 @@ Este projeto oferece uma solução simples em Python para dividir textos longos 
 ## Exemplo de Uso
 
 Ao executar a função, você recebe uma lista onde cada item contém o trecho cortado e suas informações de posição, pronto para processamento ou exibição.
+
+#APROVEITE
