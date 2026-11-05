@@ -1,19 +1,36 @@
 # Fragmentador de Texto
 
-Este projeto oferece uma solução simples em Python para dividir textos longos em blocos menores e organizados. A ferramenta fatia o texto em tamanhos personalizáveis (por padrão, 1000 caracteres) e gera informações para cada pedaço, facilitando o rastreamento do conteúdo original.
+Solução em Python para dividir textos longos em blocos menores e organizados. Por padrão fatia em trechos de 1000 caracteres e gera metadados de rastreio para cada pedaço. Também lê o texto bruto a partir de PDF.
 
----
+## Requisitos
 
-## Como Funciona
+- Python 3.8+
+- `PyPDF2` (`pip install PyPDF2`)
 
-- **Fatiamento de Texto:** Divide automaticamente um texto bruto em pedaços com tamanho configurável.
-- **Informações de Rastreio (Metadados):** Cada pedaço é acompanhado de dados como:
-  - Número de identificação da parte (índice).
-  - Posição exata de início e fim no texto original.
-- **Flexibilidade:** É fácil ajustar o tamanho de cada bloco alterando o parâmetro de tamanho do fragmento.
+## Como funciona
 
----
+- **Leitura de PDF:** extrai texto de todas as páginas
+- **Fatiamento:** divide o texto bruto em pedaços com tamanho configurável
+- **Metadados:** cada pedaço inclui índice e posições de início/fim no texto original
 
-## Exemplo de Uso
+## Uso
 
-Ao executar a função, você recebe uma lista onde cada item contém o trecho cortado e suas informações de posição, pronto para processamento ou exibição.
+```python
+from caracteres import ler_pdf, fragmentar_texto
+
+texto = ler_pdf(r"caminho\para\arquivo.pdf")
+fragmentos = fragmentar_texto(texto, tamanho_fragmento=1000)
+
+for item in fragmentos:
+    print(item["indice_fragmento"], item["inicio"], item["fim"])
+    print(item["fragmento"])
+```
+
+## Arquivos
+
+- `caracteres.py` — leitura de PDF e lógica de fragmentação
+- `README.md` — este guia
+
+## Autor
+
+Matheus Coutinho ([@sunriseinkyoto](https://github.com/sunriseinkyoto))
